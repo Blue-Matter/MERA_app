@@ -1,6 +1,6 @@
 proxy:
   title: Methods Evaluation and Risk Assessment
-  landing-page: /mera
+
   port: 8080 # use Port 8080 for ShinyProxy
   
   container-wait-time: 30000 # how long should we wait for the container to spin up (30s as default as this is enough for our Shiny apps)
@@ -22,7 +22,7 @@ proxy:
     logout-url: https://mera.auth.us-west-2.amazoncognito.com/logout?client_id=57gl0olrsqj2cvadrm8i8bju4n&logout_uri=https://www.merafish.org/
     client-id: 57gl0olrsqj2cvadrm8i8bju4n # get this from AWS Cognito user pool management page
     client-secret: 1ru1n2jfrlp5c09sna2cqmhbr6m19o1aphdvfgqgnjjt44m128ro # get this from AWS Cognito user pool management page
-  
+     
   #### Simple Authentication (for demo only, don't use in production) ####
   # authentication: simple
   # admin-groups: admins
