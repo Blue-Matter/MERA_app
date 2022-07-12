@@ -46,7 +46,7 @@ proxy:
       display-name: Method Evaluation and Risk Assessment
       container-cmd: ["R", "-e", "shiny::runApp('/root/mera', host='0.0.0.0', port=3838)"]
       container-image: adrianrh/mera
-      access-groups: admins # give specific access right to a group
+      # access-groups: admins # give specific access right to a group
       container-network: sp-net
 
 server:
