@@ -1,5 +1,6 @@
 proxy:
-  title: My Awesome Shiny Portal
+  title: Methods Evaluation and Risk Assessment
+  landing-page: /mera
   port: 8080 # use Port 8080 for ShinyProxy
   
   container-wait-time: 30000 # how long should we wait for the container to spin up (30s as default as this is enough for our Shiny apps)
@@ -7,31 +8,31 @@ proxy:
   heartbeat-timeout: 60000 # if the server does not receive a heartbeat for heartbeat-timeout milliseconds, the relevant proxy will be released (60s as default)
 
   #### Set Up Usage Statistics Monitoring
-  # usage-stats-url: http://influxdb:8086/write?db=shinyproxy_usagestats # use InfluxDB to store usage statistics; can be in a different server
+  usage-stats-url: http://influxdb:8086/write?db=shinyproxy_usagestats # use InfluxDB to store usage statistics; can be in a different server
   # usage-stats-username: xxxx # influxdb username if needed
   # usage-stats-password: xxxx # influxdb password if needed
 
   #### OpenID Connect Authentication ####
-  # authentication: openid # use openid auth framework
-  # openid:
-  #   roles-claim: cognito:groups # use the groups value passed by AWS cognito to identify user groups
-  #   auth-url: # https://{cognito_domain_prefix}.auth.{region}.amazoncognito.com/oauth2/authorize
-  #   token-url: # https://{cognito_domain_prefix}.auth.{region}.amazoncognito.com/oauth2/token
-  #   jwks-url: # https://cognito-idp.{region}.amazonaws.com/{userPoolId}/.well-known/jwks.json
-  #   logout-url: # https://{cognito_domain_prefix}.auth.{region}.amazoncognito.com/logout?client_id={client_id}&logout_uri={your_host_url}
-  #   client-id:  # get this from AWS Cognito user pool management page
-  #   client-secret:  # get this from AWS Cognito user pool management page
+  authentication: openid # use openid auth framework
+  openid:
+    roles-claim: cognito:groups # use the groups value passed by AWS cognito to identify user groups
+    auth-url: https://mera.auth.us-west-2.amazoncognito.com/oauth2/authorize
+    token-url: https://mera.auth.us-west-2.amazoncognito.com/oauth2/token
+    jwks-url: https://cognito-idp.us-west-2.amazonaws.com/us-west-2_m0qmenpEG/.well-known/jwks.json
+    logout-url: https://mera.auth.us-west-2.amazoncognito.com/logout?client_id=57gl0olrsqj2cvadrm8i8bju4n&logout_uri=https://www.merafish.org/
+    client-id: 57gl0olrsqj2cvadrm8i8bju4n # get this from AWS Cognito user pool management page
+    client-secret: 1ru1n2jfrlp5c09sna2cqmhbr6m19o1aphdvfgqgnjjt44m128ro # get this from AWS Cognito user pool management page
   
   #### Simple Authentication (for demo only, don't use in production) ####
-  authentication: simple
-  admin-groups: admins
-  users:
-  - name: admin
-    password: admin
-    groups: admins
-  - name: test
-    password: test
-    groups: admins
+  # authentication: simple
+  # admin-groups: admins
+  # users:
+  # - name: admin
+    # password: admin
+    # groups: admins
+  # - name: test
+    # password: test
+    # groups: admins
   
   # Set the container backend: The container-backend can be one of docker (default), docker-swarm or kubernetes
   container-backend: docker-swarm
@@ -41,10 +42,10 @@ proxy:
   
   # Below is a list of Shiny apps and their config
   specs:
-    - id: euler
-      display-name: Euler's number
-      container-cmd: ["R", "-e", "shiny::runApp('/root/euler')"]
-      container-image: presstofan/shiny-euler-app # this need to be replaced with your own Shiny app in production
+    - id: mera
+      display-name: Method Evaluation and Risk Assessment
+      container-cmd: ["R", "-e", "shiny::runApp('/root/mera', host='0.0.0.0', port=3838)"]
+      container-image: adrianrh/mera
       access-groups: admins # give specific access right to a group
       container-network: sp-net
 
