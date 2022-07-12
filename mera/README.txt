@@ -1,0 +1,1 @@
+Manually copy over the MERA app files (server.r, etc) to this directory
