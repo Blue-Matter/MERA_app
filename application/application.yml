@@ -1,6 +1,6 @@
 proxy:
   title: Methods Evaluation and Risk Assessment
-  landing-page: /
+  landing-page: /app/mera
   port: 8080 # use Port 8080 for ShinyProxy
   
   container-wait-time: 30000 # how long should we wait for the container to spin up (30s as default as this is enough for our Shiny apps)
