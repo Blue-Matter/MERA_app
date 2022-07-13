@@ -12,6 +12,8 @@ proxy:
   # usage-stats-username: xxxx # influxdb username if needed
   # usage-stats-password: xxxx # influxdb password if needed
 
+  admin-groups: admins
+  
   #### OpenID Connect Authentication ####
   authentication: openid # use openid auth framework
   openid:
@@ -23,23 +25,29 @@ proxy:
     client-id: 57gl0olrsqj2cvadrm8i8bju4n # get this from AWS Cognito user pool management page
     client-secret: 1ru1n2jfrlp5c09sna2cqmhbr6m19o1aphdvfgqgnjjt44m128ro # get this from AWS Cognito user pool management page
      
-  #### Simple Authentication (for demo only, don't use in production) ####
-  # authentication: simple
-  # admin-groups: admins
-  # users:
-  # - name: admin
-    # password: admin
-    # groups: admins
-  # - name: test
-    # password: test
-    # groups: admins
-  
   # Set the container backend: The container-backend can be one of docker (default), docker-swarm or kubernetes
   container-backend: docker-swarm
   
   docker:
       internal-networking: true
-  
+      
+  # support:
+  #   mail-to-address: adrian@bluematterscience.com
+  #   mail-from-address: issues@merafish.org
+
+  # spring:
+  #   mail:
+  #     host: smtp.gmail.com
+  #     # TLS: 587 SSL: 465 Plain: 25
+  #     port: 465
+  #     username: my_username
+  #     password: my_password
+  #     properties:
+  #       # For StartTLS
+  #       mail.smtp.starttls.enable: true
+  #       # For SSL
+  #       #mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+      
   # Below is a list of Shiny apps and their config
   specs:
     - id: mera
