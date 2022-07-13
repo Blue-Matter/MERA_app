@@ -59,6 +59,7 @@ proxy:
 
 server:
   useForwardHeaders: true # this is very important to make the AWS Cognito auth works
+  servlet.session.timeout: 0
 
 logging:
   file:
