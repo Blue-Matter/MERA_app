@@ -57,7 +57,7 @@ services:
         constraints:
           - node.role==manager
     volumes:
-      - prometheus
+      - prometheus: /prometheus
     command: 
       - '--web.enable-lifecycle'
       - '--config.file=/prometheus/prometheus.yml'
