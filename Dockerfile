@@ -24,11 +24,15 @@ RUN apt-get update && apt-get install -y \
 	#libcurl4-gnutls-dev \
 
 # install basic shiny functionality to R
-RUN R -e "install.packages(c('shiny', 'rmarkdown'), repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages(c('shiny', 'rmarkdown', 'devtools'), repos='https://cloud.r-project.org/')"
+
+# install Github versions of openMSE packages	 
+RUN R -e "devtools::install_github(c('blue-matter/MSEtool', 'blue-matter/DLMtool', 'blue-matter/SAMtool'))"
 
 # install R dependencies for MERA
 RUN R -e "install.packages(c('openMSE', 'corpcor', 'cowplot', 'curl', 'DT', 'formattable', 'kableExtra', 'mvtnorm', 'shinyjs', 'shinyalert', 'shinyBS', 'shinyWidgets', 'tinytex','rfishbase'), dependencies=TRUE, repos='https://cloud.r-project.org/')"
-	 
+
+
 	 
 # copy the mera app (with the ui.R and server.R files)
 # onto the image in folder /root/mera
