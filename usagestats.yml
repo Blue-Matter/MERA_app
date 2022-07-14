@@ -59,7 +59,9 @@ services:
     volumes:
       - ./prometheus:/etc/prometheus
       - prometheus-data:/prometheus
-    command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yml
+    command: --web.enable-lifecycle  \
+      --config.file=/etc/prometheus/prometheus.yml \
+      --web.listen-address=:7070
 
 networks:
   traefik-public:
