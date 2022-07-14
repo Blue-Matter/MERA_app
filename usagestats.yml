@@ -41,7 +41,7 @@ services:
   prometheus:
     image: prom/prometheus
     ports: 
-      - 9090
+      - 7070:9090
     networks:
       - traefik-public
       - sp-net
@@ -57,7 +57,9 @@ services:
         constraints:
           - node.role==manager
     volumes:
-        - prometheus:/var/lib/prometheus
+      - ./prometheus:/etc/prometheus
+      - prometheus-data:/prometheus
+    command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yml
 
 networks:
   traefik-public:
@@ -67,4 +69,4 @@ networks:
 
 volumes:
   grafana:
-  prometheus:
+  prometheus-data:

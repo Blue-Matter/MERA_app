@@ -17,14 +17,7 @@ proxy:
       export:
         prometheus:
           enabled: true
-
-  scrape_configs:
-    - job_name: 'shinyproxy'
-      metrics_path: '/actuator/prometheus'
-      static_configs:
-        # note: this is the port of ShinyProxy Actuator services, not the port of Prometheus which is by default also 9090
-        - targets: ['shinyproxy:9090'] 
-      
+          
   admin-groups: admins
   
   #### OpenID Connect Authentication ####
