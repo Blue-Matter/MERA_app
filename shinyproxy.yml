@@ -45,3 +45,6 @@ networks:
     external: true
   sp-net:
     external: true
+    
+volumes:
+  shinyproxy
