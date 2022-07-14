@@ -23,7 +23,7 @@ proxy:
       metrics_path: '/actuator/prometheus'
       static_configs:
         # note: this is the port of ShinyProxy Actuator services, not the port of Prometheus which is by default also 9090
-        - targets: ['localhost:9090'] 
+        - targets: ['http://35.84.72.186:9090'] 
       
   admin-groups: admins
   
