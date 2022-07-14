@@ -41,7 +41,7 @@ services:
   prometheus:
     image: prom/prometheus
     ports: 
-      - 7070:9090
+      - 7070
     networks:
       - traefik-public
       - sp-net
