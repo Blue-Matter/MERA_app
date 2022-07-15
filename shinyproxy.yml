@@ -9,6 +9,7 @@ services:
     # it knows how to treat containers.
     ports:
       - 8080
+      - 9090
     networks:
       - traefik-public
       - sp-net
