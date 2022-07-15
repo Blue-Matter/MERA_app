@@ -11,12 +11,6 @@ proxy:
   usage-stats-url: micrometer # http://influxdb:8086/write?db=shinyproxy_usagestats # use InfluxDB to store usage statistics; can be in a different server
   # usage-stats-username: xxxx # influxdb username if needed
   # usage-stats-password: xxxx # influxdb password if needed
-
-  management:
-    metrics:
-      export:
-        prometheus:
-          enabled: true
           
   admin-groups: admins
   
@@ -70,3 +64,9 @@ server:
 logging:
   file:
     shinyproxy.log
+
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
