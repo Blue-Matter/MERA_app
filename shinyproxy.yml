@@ -8,8 +8,8 @@ services:
     # Docker labels don’t do anything by themselves, but Traefik reads these so
     # it knows how to treat containers.
     ports:
-      - 8080
-      - 9090
+      - "8080"
+      - "9090"
     networks:
       - traefik-public
       - sp-net
