@@ -41,7 +41,7 @@ services:
   prometheus:
     image: prom/prometheus
     ports: 
-      - 7070
+      - 9090
     networks:
       - traefik-public
       - sp-net
@@ -67,14 +67,14 @@ services:
           - traefik.http.routers.grafana-secured.rule=Host(`${GRAFANA_DOMAIN?Variable not set}`)
           - traefik.http.routers.grafana-secured.entrypoints=https
           - traefik.http.routers.grafana-secured.tls.certresolver=le
-          - traefik.http.services.grafana-secured.loadbalancer.server.port=7070
+          - traefik.http.services.grafana-secured.loadbalancer.server.port=9090
     volumes:
       - ./prometheus:/etc/prometheus
       - prometheus-data:/prometheus
     command: 
       - '--web.enable-lifecycle'
       - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--web.listen-address=:7070'
+      - '--web.listen-address=:9090'
   
 networks:
   traefik-public:
