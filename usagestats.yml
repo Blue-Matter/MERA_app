@@ -41,7 +41,7 @@ services:
   prometheus:
     image: prom/prometheus
     ports: 
-      - 9090
+      - 7070
     networks:
       - traefik-public
       - sp-net
@@ -67,14 +67,14 @@ services:
           - traefik.http.routers.prometheus-secured.rule=Host(`${PROMETHEUS_DOMAIN?Variable not set}`)
           - traefik.http.routers.prometheus-secured.entrypoints=https
           - traefik.http.routers.prometheus-secured.tls.certresolver=le
-          - traefik.http.services.prometheus-secured.loadbalancer.server.port=9090
+          - traefik.http.services.prometheus-secured.loadbalancer.server.port=7070
     volumes:
       - ./prometheus:/etc/prometheus
       - prometheus-data:/prometheus
     command: 
       - '--web.enable-lifecycle'
       - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--web.listen-address=:9090'
+      - '--web.listen-address=:7070'
   
 networks:
   traefik-public:
