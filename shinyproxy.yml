@@ -8,8 +8,7 @@ services:
     # Docker labels don’t do anything by themselves, but Traefik reads these so
     # it knows how to treat containers.
     ports:
-      - "8080"
-      - "9090"
+      - 8080
     networks:
       - traefik-public
       - sp-net
@@ -31,8 +30,7 @@ services:
           - traefik.http.routers.shinyproxy-secured.rule=Host(`${APP_DOMAIN?Variable not set}`) # listen to port 443 for request to APP_DOMAIN (use together with the line below)
           - traefik.http.routers.shinyproxy-secured.entrypoints=https
           - traefik.http.routers.shinyproxy-secured.tls.certresolver=le # use the Let's Encrypt certificate we set up earlier
-          - traefik.http.services.shinyproxy-secured.loadbalancer.server.port=8080 # ask Traefik to search for port 8080 of the shinyproxy service container
-          - traefik.http.services.shinyproxy-secured.loadbalancer.server.port=9090 
+          - traefik.http.services.shinyproxy-secured.loadbalancer.server.port=8080 # ask Traefik to search for port 8080 of the shinyproxy service container 
     volumes:
       - ./application/application.yml:/opt/shinyproxy/application.yml
       - /var/run/docker.sock:/var/run/docker.sock
