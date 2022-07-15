@@ -56,6 +56,18 @@ services:
       placement:
         constraints:
           - node.role==manager
+      labels:
+          - traefik.enable=true
+          - traefik.docker.network=traefik-public
+          - traefik.constraint-label=traefik-public
+          - traefik.http.routers.grafana.rule=Host(`${GRAFANA_DOMAIN?Variable not set}`)
+          - traefik.http.routers.grafana.entrypoints=http
+          - traefik.http.middlewares.grafana.redirectscheme.scheme=https
+          - traefik.http.middlewares.grafana.redirectscheme.permanent=true
+          - traefik.http.routers.grafana-secured.rule=Host(`${GRAFANA_DOMAIN?Variable not set}`)
+          - traefik.http.routers.grafana-secured.entrypoints=https
+          - traefik.http.routers.grafana-secured.tls.certresolver=le
+          - traefik.http.services.grafana-secured.loadbalancer.server.port=7070
     volumes:
       - ./prometheus:/etc/prometheus
       - prometheus-data:/prometheus
