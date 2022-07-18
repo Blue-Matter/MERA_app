@@ -3,7 +3,7 @@ version: '3.3'
 services:
 
   grafana:
-    image: grafana/grafana:7.0.1
+    image: grafana/grafana:latest
     ports:
       - 3000
     networks:
@@ -39,7 +39,7 @@ services:
       - grafana:/var/lib/grafana
   
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:latest
     ports: 
       - 7070
     networks:
