@@ -58,7 +58,7 @@ proxy:
       container-network: sp-net
 
 server:
-  useForwardHeaders: native # this is very important to make the AWS Cognito auth works
+  forward-headers-strategy: native 
   servlet.session.timeout: 0
 
 logging:
