@@ -63,7 +63,7 @@ server:
 
 logging:
   file:
-    shinyproxy.log
+    name: shinyproxy.log
 
 management:
   metrics:
