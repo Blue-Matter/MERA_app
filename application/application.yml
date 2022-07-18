@@ -15,15 +15,15 @@ proxy:
   admin-groups: admins
   
   #### OpenID Connect Authentication ####
-  authentication: openid # use openid auth framework
-  openid:
-    roles-claim: cognito:groups # use the groups value passed by AWS cognito to identify user groups
-    auth-url: https://mera.auth.us-west-2.amazoncognito.com/oauth2/authorize
-    token-url: https://mera.auth.us-west-2.amazoncognito.com/oauth2/token
-    jwks-url: https://cognito-idp.us-west-2.amazonaws.com/us-west-2_m0qmenpEG/.well-known/jwks.json
-    logout-url: https://mera.auth.us-west-2.amazoncognito.com/logout?client_id=57gl0olrsqj2cvadrm8i8bju4n&logout_uri=https%3A%2F%2Fmerafish.org   
-    client-id: 57gl0olrsqj2cvadrm8i8bju4n # get this from AWS Cognito user pool management page
-    client-secret: 1ru1n2jfrlp5c09sna2cqmhbr6m19o1aphdvfgqgnjjt44m128ro # get this from AWS Cognito user pool management page
+  authentication: none # openid # use openid auth framework
+  # openid:
+    # roles-claim: cognito:groups # use the groups value passed by AWS cognito to identify user groups
+    # auth-url: https://mera.auth.us-west-2.amazoncognito.com/oauth2/authorize
+    # token-url: https://mera.auth.us-west-2.amazoncognito.com/oauth2/token
+    # jwks-url: https://cognito-idp.us-west-2.amazonaws.com/us-west-2_m0qmenpEG/.well-known/jwks.json
+    # logout-url: https://mera.auth.us-west-2.amazoncognito.com/logout?client_id=57gl0olrsqj2cvadrm8i8bju4n&logout_uri=https%3A%2F%2Fmerafish.org   
+    # client-id: 57gl0olrsqj2cvadrm8i8bju4n # get this from AWS Cognito user pool management page
+    # client-secret: 1ru1n2jfrlp5c09sna2cqmhbr6m19o1aphdvfgqgnjjt44m128ro # get this from AWS Cognito user pool management page
      
   # Set the container backend: The container-backend can be one of docker (default), docker-swarm or kubernetes
   container-backend: docker-swarm
