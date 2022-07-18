@@ -3,7 +3,7 @@ version: '3.3'
 services:
 
   shinyproxy:
-    image: presstofan/shinyproxy-example
+    image: adrianrh/shinyproxy
     ports:
       - 8080
     networks:
