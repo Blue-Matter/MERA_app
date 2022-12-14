@@ -33,7 +33,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
   
   mera:
-    image: adrianrh/mera
+    image: adrianrh/mera_update
     networks:
       - sp-net
 
